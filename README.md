@@ -7,6 +7,8 @@
 
 演示视频地址为： https://www.bilibili.com/video/BV1Bz3gejEuv/
 
+demo网站（暂时）： https://bdbd-185-248-184-99.ngrok-free.app
+
 系统主要构成如下：
 
 1.医疗多模态模型：由我们搜集的公开医疗数据集和自建医疗数据集训练InternLM-XComposer2_vl_7b而成。
