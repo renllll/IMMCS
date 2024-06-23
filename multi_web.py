@@ -20,7 +20,7 @@ parser.add_argument("--port", default=11111, type=int)
 args = parser.parse_args()
 
 # 初始化模型和分词器
-model_path = "/mnt/network_share/任意/医疗大模型/完整医疗大模型系统/多模态大模型/yiliaoduomotai01"
+model_path = "path_to_multimodel"
 
 model = AutoModel.from_pretrained(
     model_path,
