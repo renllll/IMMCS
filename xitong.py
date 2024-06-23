@@ -9,7 +9,7 @@ from dataclasses import asdict
 def load_multimodel():
 # 初始化模型和分词器
     torch.set_grad_enabled(False)
-    model_path_multi = "/mnt/network_share/任意/医疗大模型/完整医疗大模型系统/多模态大模型/yiliaoduomotai01"
+    model_path_multi = "path_to_multimodel"
     devices = torch.device('cuda:1')
     multimodel = AutoModel.from_pretrained(
         model_path_multi,
@@ -216,10 +216,10 @@ def on_btn_click():
 #
 @st.cache_resource
 def load_model():
-    recall_model_path = "/mnt/network_share/任意/医疗大模型/完整医疗大模型系统/医疗预训练大模型/rag/train_similar_model/mixed_model_1"
+    recall_model_path = "path_to_recall_model"
     recall_tokenizer = AutoTokenizer.from_pretrained(recall_model_path, model_max_length=512)
     recall_model = AutoModel.from_pretrained(recall_model_path)
-    rank_model_path = '/mnt/network_share/任意/医疗大模型/完整医疗大模型系统/医疗预训练大模型/rag/train_similar_model/best_model/rank'
+    rank_model_path = 'path_to_rank_model'
     rank_model = BertForSequenceClassification.from_pretrained(
         rank_model_path)
     rank_tokenizer = AutoTokenizer.from_pretrained(rank_model_path, model_max_length=512)
@@ -227,11 +227,11 @@ def load_model():
     rank_model = rank_model.to(device)
     recall_model = recall_model.to(device)
 
-    llm_model_path = "/mnt/network_share/任意/model/internlm2-chat-7b"
+    llm_model_path = "internlm2-chat-7b"#path_to_llm
     llm_model = AutoModel.from_pretrained(llm_model_path,
                                                      trust_remote_code=True).to(
         torch.bfloat16).to(device)
-    # llm_model = PeftModel.from_pretrained(llm_model,  "/mnt/network_share/任意/医疗大模型/完整医疗大模型系统/医疗预训练大模型/yiliao_sft_yuan")
+    # llm_model = PeftModel.from_pretrained(llm_model,  "path_to_lora_model")
     llm_tokenizer = AutoTokenizer.from_pretrained(llm_model_path,
                                                   trust_remote_code=True)
 
@@ -369,8 +369,8 @@ def get_similar_query(query,llm_model, llm_tokenizer, recall_tokenizer, recall_m
     for _ in range(0, num):
         # 大模型进行改写
 
-        #prompt = f"{query}\n问题:您是一个问题重写器，它可以将输入问题转换为一个更好的版本，以优化网络搜索。查看输入并尝试推理基础语义意图/意义。请严格限制输出不超过50字。"
-        prompt = f"{query}\n问题:您是一个问题重写器，它可以将输入问题转换为一个更好的版本，以优化网络搜索。请严格限制输出不超过50字。"
+        prompt = f"{query}\n问题:您是一个问题重写器，它可以将输入问题转换为一个更好的版本，以优化网络搜索。查看输入并尝试推理基础语义意图/意义。请严格限制输出不超过50字。"
+        #prompt = f"{query}\n问题:您是一个问题重写器，它可以将输入问题转换为一个更好的版本，以优化网络搜索。请严格限制输出不超过50字。"
         response = chat2(prompt,llm_model, llm_tokenizer, recall_tokenizer, recall_model, rank_model, rank_tokenizer)
         results.append(response)
     print("重写完毕")
@@ -454,14 +454,14 @@ def get_prompt(recall_result, fangan_knowledge):
 
 def chongxie_zhaohui_jingpai(xuanzekeshi, question,llm_model, llm_tokenizer, recall_tokenizer, recall_model, rank_model, rank_tokenizer):
     with open(
-            f"/mnt/network_share/任意/医疗大模型/完整医疗大模型系统/医疗预训练大模型/rag/对话数据大全/{xuanzekeshi}/id_vector",
+            f"path_to_knowledge_base/{xuanzekeshi}/id_vector",
             "rb") as f:
         faiss_index = pickle.load(f)
     id_knowledge = read_knowledge(
-        f"/mnt/network_share/任意/医疗大模型/完整医疗大模型系统/医疗预训练大模型/rag/对话数据大全/{xuanzekeshi}/id_desc_map.json")
+        f"path_to_knowledge_base/{xuanzekeshi}/id_desc_map.json")
     fangan_knowledge = []
     with open(
-            f"/mnt/network_share/任意/医疗大模型/完整医疗大模型系统/医疗预训练大模型/rag/对话数据大全/{xuanzekeshi}.jsonl",
+            f"path_to_knowledge_base/{xuanzekeshi}.jsonl",
             'r', encoding='utf-8') as file:
         for line in file:
             # 解析每一行作为JSON对象
