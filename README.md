@@ -5,7 +5,7 @@
 
 医疗多模态模型存储地址为https://openxlab.org.cn/models/detail/yuanyizhixie/Medical_multi_modal_large_model。
 
-演示视频地址为： 
+演示视频地址为： https://www.bilibili.com/video/BV1Bz3gejEuv/
 
 系统主要构成如下：
 
