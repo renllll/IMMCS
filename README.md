@@ -39,7 +39,9 @@ demo网站（暂时）： https://bdbd-185-248-184-99.ngrok-free.app
 
 **环境搭建**
 ```
-git clone https://github.com/renllll/IMMCS/edit/main
+git clone https://github.com/renllll/IMMCS/tree/main
+
+cd IMMCS
 
 conda create -n  docoter python==3.10
 
