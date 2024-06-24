@@ -39,7 +39,7 @@ demo网站（暂时）： https://bdbd-185-248-184-99.ngrok-free.app
 
 **环境搭建**
 ```
-git clone https://github.com/renllll/IMMCS/tree/main
+git clone https://github.com/renllll/IMMCS
 
 cd IMMCS
 
