@@ -45,6 +45,8 @@ cd IMMCS
 
 conda create -n  docoter python==3.10
 
+conda activate docoter
+
 pip install -r requirements.txt
 ```
 **下载模型**
