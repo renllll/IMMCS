@@ -43,9 +43,9 @@ git clone https://github.com/renllll/IMMCS/tree/main
 
 cd IMMCS
 
-conda create -n  docoter python==3.10
+conda create -n  doctor python==3.10
 
-conda activate docoter
+conda activate doctor
 
 pip install -r requirements.txt
 ```
