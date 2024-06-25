@@ -326,7 +326,7 @@ def get_similar_query(query,llm_model, llm_tokenizer, recall_tokenizer, recall_m
     for _ in range(0, num):
         # 大模型进行改写
 
-        prompt = f"{query}\n问题:您是一个问题重写器，它可以将输入问题转换为一个更好的版本，以优化网络搜索。查看输入并尝试推理基础语义意图/意义。请严格限制输出不超过50字，必须仅输出改写后的问题。"
+        prompt = f"问题:{query}\n你是一个问题重写器，它可以将输入问题转换为一个更好的版本，以优化网络搜索。查看输入并尝试推理基础语义意图/意义。请严格限制输出不超过50字，必须仅输出改写后的问题。"
         #prompt = f"{query}\n问题:您是一个问题重写器，它可以将输入问题转换为一个更好的版本，以优化网络搜索。"
         response = chat2(prompt,llm_model, llm_tokenizer, recall_tokenizer, recall_model, rank_model, rank_tokenizer)
         results.append(response)
