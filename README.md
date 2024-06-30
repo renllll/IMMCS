@@ -77,3 +77,19 @@ python multi_web.py
 streamlit run  xitong.py
 ```
 注意这需要两张3090或者一张a100能完全部署，需要至少40gb的显存
+
+
+**模型评测**
+
+以下为qwen2-7b-instruct和internlm2-7b-chat在我们的分科室知识库上使用medqa的中文评测数据评测结果，qwen2-7b-instruct原始评测总体正确率为80.64，加上不分科室的知识库总体正确率为76.07，而使用我们的分科室机制后正确率到了84.41，internlm2-7b-chat原始正确率为53.47，加上我们分科室机制后准确率为57.78。
+
+
+<img width="420" alt="image" src="https://github.com/renllll/IMMCS/assets/103827697/4c122af4-0c97-479d-8843-2cd56ab76c10">
+
+**未来计划**
+
+
+1.开源我们预训练和全量微调后的医疗大模型
+
+2.进一步实现分科室agent，实现各科室交互解决复杂疾病症状。
+
